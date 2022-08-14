@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DatePickerDemo.Controls.CustomDateTimePicker"
+             Margin="0"
+      x:Name="this"
+      ColumnDefinitions="*,*" RowDefinitions="Auto,Auto">
+    <Label Grid.ColumnSpan="2"
+           BindingContext="{x:Reference this}"
+           Text="{Binding Caption}" />
+    <DatePicker HorizontalOptions="FillAndExpand"
+                x:Name="MyDatePicker"
+                Grid.Row="1"
+                Grid.Column="0"
+                DateSelected="DatePicker_DateSelected" />
+    <TimePicker HorizontalOptions="FillAndExpand"
+                x:Name="MyTimePicker"
+                Grid.Row="1" Grid.Column="1"
+                PropertyChanged="TimePicker_PropertyChanged" />
+</Grid>

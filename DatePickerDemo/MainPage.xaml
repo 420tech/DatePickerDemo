@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:DatePickerDemo.Controls"
+             xmlns:vm="clr-namespace:DatePickerDemo.ViewModels"
+             xmlns:helpers="clr-namespace:DatePickerDemo.Helpers"
+             x:DataType="vm:MainPageViewModel"
+             x:Class="DatePickerDemo.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Image
+                Source="dotnet_bot.png"
+                SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                HeightRequest="200"
+                HorizontalOptions="Center" />
+
+
+            <controls:Container HeaderTitleIsVisible="True" HeaderTitle="{Binding Caption}">
+                <StackLayout>
+
+                    <!--Select dates-->
+                    <controls:Container
+                OnIconTappedCommand="{Binding CleanDateCommand}"
+                Icon="{x:Static helpers:IconFont.Trash}"
+                IconIsVisible="True"
+                HeaderTitle="Select your dates"
+                HeaderTitleIsVisible="True">
+                        <StackLayout 
+                    Padding="16">
+                            <controls:CustomDateTimePicker
+                    SelectedDateTime="{Binding StartDateTime, Mode=TwoWay}"
+                    Caption="Start Date"/>
+                            <controls:CustomDateTimePicker
+                    SelectedDateTime="{Binding EndDateTime, Mode=TwoWay}"
+                    Caption="End Date"/>
+                        </StackLayout>
+                    </controls:Container>
+
+                    <!--Show selected dates-->
+                    <controls:Container
+                HeaderTitle="Selected dates">
+                        <StackLayout
+                    Spacing="16">
+                            <Label HorizontalTextAlignment="Center" TextColor="DarkGray" FontSize="18">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Start: "/>
+                                        <Span Text="{Binding StartDateTime, Mode=TwoWay}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label HorizontalTextAlignment="Center" TextColor="DarkGray" FontSize="18">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="End: "/>
+                                        <Span Text="{Binding EndDateTime, Mode=TwoWay}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                    </controls:Container>
+                </StackLayout>
+            </controls:Container>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

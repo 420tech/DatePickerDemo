@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DatePickerDemo.Controls.Container"
+              ControlTemplate="{DynamicResource ContainerTemplate}">
+    <ContentView.Resources>
+
+        <ResourceDictionary>
+
+            <ControlTemplate x:Key="ContainerTemplate">
+                <Frame Style="{DynamicResource FrameContainerStyle}">
+                    <StackLayout Spacing="0">
+
+                        <Grid Style="{DynamicResource BoxHeadTitleContainer}"
+                            IsVisible="{TemplateBinding HeaderTitleIsVisible}">
+
+                            <Label Style="{DynamicResource BoxHeadTitle}" Text="{TemplateBinding HeaderTitle}" />
+
+                            <Image
+                                Style="{DynamicResource BoxHeadIcon}"
+                                IsVisible="{TemplateBinding IconIsVisible}">
+                                <Image.Source>
+                                    <!--TODO: Convert this to a style-->
+                                    <FontImageSource
+                                        Glyph="{TemplateBinding Icon}"
+                                        Color="{DynamicResource BoxHeadTextColor}"
+                                        FontFamily="FA"
+                                        Size="18" />
+                                </Image.Source>
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{TemplateBinding OnIconTappedCommand}"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+
+                        </Grid>
+
+                        <StackLayout Style="{DynamicResource FrameContentStyle}">
+                            <ContentPresenter />
+                        </StackLayout>
+
+                    </StackLayout>
+                </Frame>
+            </ControlTemplate>
+
+        </ResourceDictionary>
+    </ContentView.Resources>
+</ContentView>
